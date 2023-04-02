@@ -40,4 +40,4 @@ sudo wget -nc -P /opt/ydb/cfg https://raw.githubusercontent.com/Sodex/ydb_test/m
 
 #LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/ydb/lib /opt/ydb/bin/ydbd admin database /Root/testdb create ssd:1
 
-#LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/ydb/lib /opt/ydb/bin/ydbd server --grpc-port 2136 --ic-port 19002 --mon-port 8766 --yaml-config /opt/ydb/cfg/config.yaml --tenant /Root/testdb --node-broker grpc://ydb-node-zone-a.ru-central1.internal:2135 --node-broker grpc://ydb-node-zone-b.ru-central1.internal:2135 --node-broker grpc://ydb-node-zone-c.ru-central1.internal:2135
+#LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/ydb/lib /opt/ydb/bin/ydbd server --grpc-port 2136 --ic-port 19002 --mon-port 8766 --yaml-config /opt/ydb/cfg/config.yaml --tenant /Root/testdb --node-broker grpc://ydb-node-zone-a.ru-central1.internal:2135 --node-broker grpc://ydb-node-zone-b.ru-central1.internal:2135 --node-broker grpc://ydb-node-zone-c.ru-central1.internal:2135 &
