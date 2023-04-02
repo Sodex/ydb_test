@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# according to https://ydb.tech/en/docs/deploy/manual/deploy-ydb-on-premises
+
 
 DISKS=$(cat nodes-disks.txt)
 CONFIG_PATH=https://raw.githubusercontent.com/Sodex/ydb/main/ydb/deploy/yaml_config_examples/config.yaml
