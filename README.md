@@ -3,8 +3,8 @@
 vks@ydb-node-zone-a:~/sanity_checks$ python3 main.py -e 158.160.52.175:2136 -d /Root/testdb
 ```
 ```sql
-SELECT brand.name AS Brand, cars_ads.price as Price, cars_ads.color as Color
-FROM brand INNER JOIN cars_ads ON cars_ads.id == brand.id
+SELECT brand.name AS Brand, cars_ads.price as Price, cars_ads.color as Color \
+FROM brand INNER JOIN cars_ads ON cars_ads.id == brand.id \
 WHERE cars_ads.color == 'Белый'
 
 {'Brand': 'Lexus', 'Price': 445000, 'Color': 'Белый'}
@@ -15,8 +15,8 @@ WHERE cars_ads.color == 'Белый'
 ```
 
 ```sql
-SELECT brand.name AS Brand, min(price) AS MinPrice, max(price) AS MaxPrice
-FROM cars_ads INNER JOIN  brand ON brand.id == cars_ads.brand_id
+SELECT brand.name AS Brand, min(price) AS MinPrice, max(price) AS MaxPrice \
+FROM cars_ads INNER JOIN  brand ON brand.id == cars_ads.brand_id \
 GROUP BY brand.name
 {'Brand': 'Volkswagen', 'MinPrice': 415000, 'MaxPrice': 1480000}
 {'Brand': 'Cadillac', 'MinPrice': 1305000, 'MaxPrice': 1305000}
