@@ -1,3 +1,0 @@
-/dev/vdb
-/dev/vdc
-/dev/vdd
