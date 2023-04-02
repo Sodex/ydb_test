@@ -28,7 +28,7 @@ do
   IDX=$(expr $IDX + 1)
 done
 
-sudo wget -nc -P /opt/ydb/cfg https://raw.githubusercontent.com/Sodex/ydb/main/ydb/deploy/yaml_config_examples/config.yaml
+sudo wget -nc -P /opt/ydb/cfg https://raw.githubusercontent.com/Sodex/ydb_test/main/config.yaml
 
 
 #sudo su - ydb
