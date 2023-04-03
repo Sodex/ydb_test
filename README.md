@@ -1,4 +1,4 @@
-# Sanity checks output:
+# Sanity check output:
 ```bash
 vks@ydb-node-zone-a:~/sanity_checks$ python3 main.py -e 158.160.52.175:2136 -d /Root/testdb
 ```
