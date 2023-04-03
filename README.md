@@ -1,6 +1,6 @@
 # Sanity check output:
 ```bash
-vks@ydb-node-zone-a:~/sanity_checks$ python3 main.py -e 158.160.52.175:2136 -d /Root/testdb
+vks@ydb-node-zone-a:~/sanity_checks$ python3 main.py -e <node_ip>:2136 -d /Root/testdb
 ```
 ```sql
 SELECT brand.name AS Brand, cars_ads.price as Price, cars_ads.color as Color \
