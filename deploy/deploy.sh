@@ -32,14 +32,19 @@ done
 
 sudo wget -nc -P /opt/ydb/cfg https://raw.githubusercontent.com/Sodex/ydb_test/main/deploy/config.yaml
 
+#(1)#sudo su - ydb
+#(2)#cd /opt/ydb
 
-#sudo su - ydb
-#cd /opt/ydb
+#(3)#LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/ydb/lib /opt/ydb/bin/ydbd server --log-level 3 --syslog --tcp --yaml-config /opt/ydb/cfg/config.yaml --grpc-port 2135 --ic-port 19001 --mon-port 8765 --node static &
 
-#LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/ydb/lib /opt/ydb/bin/ydbd server --log-level 3 --syslog --tcp --yaml-config /opt/ydb/cfg/config.yaml --grpc-port 2135 --ic-port 19001 --mon-port 8765 --node static &
+#(4)#LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/ydb/lib /opt/ydb/bin/ydbd admin blobstorage config init --yaml-file /opt/ydb/cfg/config.yaml
 
-#LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/ydb/lib /opt/ydb/bin/ydbd admin blobstorage config init --yaml-file /opt/ydb/cfg/config.yaml
+#(5)#LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/ydb/lib /opt/ydb/bin/ydbd admin database /Root/testdb create ssd:1
 
-#LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/ydb/lib /opt/ydb/bin/ydbd admin database /Root/testdb create ssd:1
+#(6)#LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/ydb/lib /opt/ydb/bin/ydbd server --grpc-port 2136 --ic-port 19002 --mon-port 8766 --yaml-config /opt/ydb/cfg/config.yaml --tenant /Root/testdb --node-broker grpc://<first_node_FQDN>:2135 --node-broker grpc://<second_node_FQDN>:2135 --node-broker grpc://<third_node_FQDN>:2135 &
 
-#LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/ydb/lib /opt/ydb/bin/ydbd server --grpc-port 2136 --ic-port 19002 --mon-port 8766 --yaml-config /opt/ydb/cfg/config.yaml --tenant /Root/testdb --node-broker grpc://ydb-node-zone-a.ru-central1.internal:2135 --node-broker grpc://ydb-node-zone-b.ru-central1.internal:2135 --node-broker grpc://ydb-node-zone-c.ru-central1.internal:2135 &
+# важна последовательность:
+# 1. исполнить команды (1,2) на каждом узле
+# 2. исполнить команду (3) на каждом узле
+# 3. исполнить команду (4 и 5) на одному из узлов
+# 4. исполнить команду (6) на всех узлах 
