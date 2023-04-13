@@ -1,5 +1,6 @@
 # Sanity check output:
 ```bash
+vks@ydb-node-zone-a:~/sanity_checks$ python3 -m pip install pandas
 vks@ydb-node-zone-a:~/sanity_checks$ python3 -m pip install ydb
 vks@ydb-node-zone-a:~/sanity_checks$ python3 main.py -e <node_ip>:2136 -d /Root/testdb
 ```
