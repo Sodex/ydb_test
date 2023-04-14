@@ -88,7 +88,10 @@ def create_tables(session: ydb.Session):
             transmission Utf8,
             wheel Utf8,
             year Uint64,
-            PRIMARY KEY (id)
+            PRIMARY KEY (id),
+            FAMILY default (
+                COMPRESSION = "lz4"
+            )
         )
         """)
 
