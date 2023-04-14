@@ -15,7 +15,7 @@ host_configs: # the list of available host configurations in the cluster.
     type: SSD
   host_config_id: 1
 hosts:
-- host: ydb-node-zone-a.ru-central1.internal       # storage node DNS name
+- host: <host_1_ip>       # storage node DNS name
   host_config_id: 1                 # numeric host configuration template identifier
   walle_location:                   # this parameter describes where host is located.
     body: 1                         # string representing a host serial number.
@@ -25,13 +25,13 @@ hosts:
     rack: '1'                       # string representing a rack identifier where the host is located.
                                     # if cluster is deployed using block-4-2 erasure, all hosts should be distrubited
                                     # accross at least 8 racks.
-- host: ydb-node-zone-b.ru-central1.internal
+- host: <host_2_ip>
   host_config_id: 1
   walle_location:
     body: 2
     data_center: 'zone-b'
     rack: '2'
-- host: ydb-node-zone-c.ru-central1.internal
+- host: <host_3_ip>
   host_config_id: 1
   walle_location:
     body: 3
